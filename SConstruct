@@ -330,6 +330,12 @@ def AppendEndianCheck(conf):
 #elif defined(_LITTLE_ENDIAN) && !defined(_BIG_ENDIAN)
 # undef WORDS_BIGENDIAN
 
+#elif defined(__BYTEORDER__) && (__BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__)
+# undef WORDS_BIGENDIAN
+
+#elif defined(__BYTEORDER__) && (__BYTE_ORDER__ == __ORDER_BIG_ENDIAN__)
+# define WORDS_BIGENDIAN 1
+
 #elif defined(__sparc) || defined(__sparc__) \
   || defined(_POWER)   || defined(__powerpc__) \
   || defined(__ppc__)  || defined(__hpux) || defined(__hppa) \
